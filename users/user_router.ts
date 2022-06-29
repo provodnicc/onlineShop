@@ -3,6 +3,7 @@ const userRouter = Router()
 
 import UserController from './user_controller'
 import {body} from 'express-validator'
+import { tokenMiddleware } from '../tokens/token_middleware'
 
 userRouter.post(
     '/sign-up', 
@@ -21,6 +22,12 @@ userRouter.post(
 userRouter.get(
     '/log-out',
     UserController.logOut
+)
+
+userRouter.post(
+    '/payment',
+    tokenMiddleware,
+    UserController.addMoney
 )
 
 

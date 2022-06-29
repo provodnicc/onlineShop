@@ -43,6 +43,24 @@ class UserController
             next(e)
         }
     }
+
+    async addMoney(req: any, res: any, next: any){
+        try{
+            const {money} = req.body
+            let userData = await userService.addMoney(req.user, money)
+            res.cookie(
+                'refreshToken',
+                userData.refreshToken,
+                {
+                    maxAge: 20*24*60*60*1000, 
+                    httpOnly: true
+                }
+            )
+            res.json(userData).status(200)
+        }catch(e){
+
+        }
+    }
 }
 
 export default new UserController()

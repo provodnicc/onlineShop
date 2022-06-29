@@ -11,7 +11,7 @@ class TokenService
     generateTokens(payload: any){
         return {
             refreshToken: jwt.sign(payload, config.JWT_KEY, {expiresIn: '1h'}),
-            accessToken: jwt.sign(payload, config.JWT_KEY, {expiresIn: '1m'})
+            accessToken: jwt.sign(payload, config.JWT_KEY, {expiresIn: '15m'})
         }
     }
 

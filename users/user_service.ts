@@ -64,6 +64,37 @@ class UserServ
         }
         await token!.destroy()
    }
+
+   async addMoney(userDATA:any, money: any){
+
+        if(!userDATA){
+            throw status(401)
+        }
+        if(!money){
+            throw status(203)
+        }
+
+        let user = await Users.findOne({
+            where: {
+                id: userDATA.id
+            }
+        })
+        if(!user){
+            throw status(401)
+        }
+        user!.money += money
+        user.save()
+        
+        let userDto = new UserDTO(user)
+
+        let tokens = tokenService.generateTokens({...userDto})
+        await tokenService.saveToken(tokens.refreshToken)
+        
+        return {
+            userDto,
+            ...tokens
+        }
+   }
 }
 
 export default new UserServ()
