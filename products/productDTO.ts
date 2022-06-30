@@ -1,3 +1,11 @@
+/**
+ * Product data transfer object to configure product post in the shop
+ * @field id
+ * @field name
+ * @field description
+ * @field price
+ * @field image_url
+ */
 class ProductDTO
 {
     id: string

@@ -1,9 +1,17 @@
 import Router from 'express'
-const userRouter = Router()
 
 import UserController from './user_controller'
 import {body} from 'express-validator'
 import { tokenMiddleware } from '../tokens/token_middleware'
+
+/**
+ * Routes /user requests
+ * @url /sign-up POST
+ * @url /log-in POST
+ * @url /log-out GET
+ * @url /payment POST
+*/
+const userRouter = Router()
 
 userRouter.post(
     '/sign-up', 

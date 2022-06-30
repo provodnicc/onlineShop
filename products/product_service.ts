@@ -2,6 +2,13 @@ import status from 'http-errors'
 
 import { Products } from "./product_models";
 import {ProductDTO} from './productDTO'
+/**
+ *  Service for user controller 
+ * @method addProduct - create product by the admin
+ * @method getAllProducts - take list of products
+ * @method getOneProduct - take one product by id
+ * @method getMedia - take image to user
+ */
 class ProductService
 {
     async addProduct(name: string, price: number, description: string, count: number, image: any){

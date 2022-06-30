@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize'
 import config from './config'
-
+/**
+ * connected api ORM to postgres
+ */
 const sequelize = new Sequelize(
     config.DB_NAME, 
     config.DB_USER, 

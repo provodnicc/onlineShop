@@ -1,12 +1,17 @@
 import {Cart} from './cart_models'
 
-import tokenService from '../tokens/token_service'
-import {UserDTO} from '../users/userDTO'
-import { Users } from '../users/user_models'
+import { Products } from '../products/product_models'
 class CartService
 {
-    async getCartProduct(){
+    async getCartProduct(u_id: number){
+        return await Cart.findAll({
+            where:{
+                u_id: u_id
+            },
+            include:Products
 
+        })
+        
     }
 
     async addProductToCart(p_id: string, u_id: number, count: number){
@@ -26,12 +31,6 @@ class CartService
         }else{
             product_in_cart.count += count
         }
-
-        const user = await Users.findOne({
-            where:{
-                id:u_id
-            }
-        })
 
         return {
             cart

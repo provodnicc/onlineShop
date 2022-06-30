@@ -5,7 +5,13 @@ import status from 'http-errors'
 import config from '../config'
 import {Tokens} from './token_models'
 import { UserDTO } from '../users/userDTO'
-
+/**
+ * service for token controller requests
+ * @method generateTokens 
+ * @method saveToken
+ * @method validateToken
+ * @method refresh
+ */
 class TokenService
 {
     generateTokens(payload: any){

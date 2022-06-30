@@ -1,6 +1,13 @@
 import tokenService from "./token_service"
 import status from 'http-errors'
-const tokenMiddleware = (req: any, _res: any, next: any)=>{
+/**
+ * request validate session for user
+ * @param req 
+ * @param res 
+ * @param next 
+ * @returns req.user {id, is_admin}
+ */
+const tokenMiddleware = (req: any, res: any, next: any)=>{
     try{
         const authHeader = req.headers.authorization
 
@@ -24,7 +31,13 @@ const tokenMiddleware = (req: any, _res: any, next: any)=>{
         return next(status(401))
     }
 }
-
+/**
+ * request validate session for administrator
+ * @param req 
+ * @param res 
+ * @param next 
+ * @returns req.user {id, is_admin}
+ */
 const adminMiddleware = (req:any, res:any, next:any)=>{
     try{
         const authHeader = req.headers.authorization

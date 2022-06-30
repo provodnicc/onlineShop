@@ -2,6 +2,15 @@ import sequelize from "../pool"
 import { DataTypes, Model as M} from "sequelize"
 import config from '../config'
 
+/**
+ * ORM references to 'products' on database
+ * @field id
+ * @field name
+ * @field description
+ * @field image_url
+ * @field price
+ * @field count
+ */
 class Products extends M
 {
     declare id: number
@@ -43,11 +52,6 @@ Products.init(
         modelName: 'products'
     }
 )
-
-// if(config.DEBUG)
-//     Products.sync({force:true})
-// else
-//     Products.sync()
 
 export {
     Products

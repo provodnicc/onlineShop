@@ -1,6 +1,14 @@
 import sequelize from "../pool";
 import { DataTypes, Model } from 'sequelize'
 import config from '../config'
+/**
+ * ORM references to 'users' on database 
+ * @field id
+ * @field email
+ * @field password
+ * @field money
+ * @field is_admin
+*/
 class Users extends Model{
     declare id: number
     declare email: string

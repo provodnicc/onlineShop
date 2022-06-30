@@ -3,7 +3,8 @@ class CartController
 {
     async getCartProducts(req: any, res: any, next: any){
         try{
-            
+            const cart = await cartService.getCartProduct(req.user.id)
+            res.json(cart).status(200)
         }catch(e){
             next(e)
         }

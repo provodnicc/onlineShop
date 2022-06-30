@@ -1,5 +1,12 @@
 import userService from './user_service'
 // import file from './1xx.json'
+/**
+ * controoler for /user requests
+ * @method signUp 
+ * @method logIn
+ * @method logOut
+ * @method addMoney - method to /user/payment requests
+ */
 class UserController
 {
     async signUp(req: any, res: any, next: any){

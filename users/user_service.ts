@@ -7,6 +7,13 @@ import tokenService from '../tokens/token_service'
 import { UserDTO } from './userDTO'
 import { Cart } from '../cart/cart_models'
 
+/**
+ * Service for user controller requests
+ * @method signUp
+ * @method logIn
+ * @method logOut
+ * @method addMoney
+ */
 class UserServ
 {
     async signUp(email: string, password: string){

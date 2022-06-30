@@ -1,3 +1,8 @@
+/**
+ * user data transfer object for authentification
+ * @param id
+ * @param is_admin
+ */
 class UserDTO
 {
     public id: number

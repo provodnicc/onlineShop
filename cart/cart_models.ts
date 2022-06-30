@@ -4,7 +4,13 @@ import config from '../config'
 
 import {Users} from '../users/user_models';
 import {Products} from '../products/product_models'
-
+/**
+ * ORM references to 'cart' on database
+ * @field id
+ * @field u_id
+ * @field p_id
+ * @field count
+ */
 class Cart extends M{
     declare id: number
     declare u_id: number
@@ -44,10 +50,6 @@ Cart.init(
         modelName:'cart'
     }
 )
-// if(config.DEBUG)
-//     Cart.sync({force:true})
-// else
-//     Cart.sync()
 
 export {
     Cart
