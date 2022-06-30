@@ -1,5 +1,5 @@
 import userService from './user_service'
-// import file from './1xx.json'
+import cartService from '../cart/cart_service'
 /**
  * controoler for /user requests
  * @method signUp 
@@ -59,9 +59,19 @@ class UserController
         }
     }
 
-    createAdmin(req: any, res: any, next: any){
+    async createAdmin(req: any, res: any, next: any){
         try{
+            await userService.createAdmin()
+            res.status(200).json('admin created')
+        }catch(e){
+            next(e)
+        }
+    }
 
+    async showPurchases(req: any, res: any, next: any){
+        try{
+            let purchase = await cartService.showPurchases()
+            res.json(purchase).status(200)
         }catch(e){
             next(e)
         }

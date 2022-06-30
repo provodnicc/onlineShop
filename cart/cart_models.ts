@@ -51,6 +51,41 @@ Cart.init(
     }
 )
 
+
+
+/**
+ * ORM for model 'purchases' on database
+ * @field id
+ * @field u_id
+ * @field price
+ */
+class Purchases extends M{
+    declare id: Number
+    declare u_id: Number
+    declare price: Number
+}
+
+Purchases.init(
+    {
+        id:{
+            type: DataTypes.INTEGER,
+            autoIncrement:true,
+            primaryKey:true
+        },
+        u_id: {
+            type:DataTypes.INTEGER,
+            references:{
+                key:'id',
+                model: Users
+            }
+        },
+        price: DataTypes.DECIMAL(12,2)
+    },{
+        sequelize,
+        modelName: 'purshases'
+    }
+)
 export {
-    Cart
+    Cart,
+    Purchases
 }

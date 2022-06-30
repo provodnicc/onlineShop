@@ -2,7 +2,7 @@ import Router from 'express'
 
 import UserController from './user_controller'
 import {body} from 'express-validator'
-import { tokenMiddleware } from '../tokens/token_middleware'
+import { adminMiddleware, tokenMiddleware } from '../tokens/token_middleware'
 import config from '../config'
 /**
  * Routes /user requests
@@ -37,9 +37,17 @@ userRouter.post(
     tokenMiddleware,
     UserController.addMoney
 )
+// admin's routers
 
 if(config.DEBUG)
     userRouter.get('/create-admin')
+
+userRouter.get(
+    '/analitics',
+    // adminMiddleware,
+    UserController.showPurchases
+)
+
 
 
 export default userRouter

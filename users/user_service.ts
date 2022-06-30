@@ -5,7 +5,8 @@ import {Users} from './user_models'
 import { Tokens } from '../tokens/token_models'
 import tokenService from '../tokens/token_service'
 import { UserDTO } from './userDTO'
-import { Cart } from '../cart/cart_models'
+import { Cart, Purchases } from '../cart/cart_models'
+import config from '../config'
 
 /**
  * Service for user controller requests
@@ -33,10 +34,8 @@ class UserServ
             email: email,
             password: bcrypt.hashSync(password, 7)
         })
-        Cart.create({
-            u_id:user.id
-        })
-        return user
+       
+        return new UserDTO(user)
     }
 
     async logIn(email: string, password: string){
@@ -54,12 +53,12 @@ class UserServ
         if (!passEquals){
             throw status(400, 'invalid password')
         }
-
-        let tokens = tokenService.generateTokens({...new UserDTO(finded_user)})
+        let userDto = new UserDTO(finded_user)
+        let tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(tokens.refreshToken)
 
         return {
-            finded_user,
+            userDto,
             ...tokens
         }
     }
@@ -102,6 +101,34 @@ class UserServ
             userDto,
         }
    }
+
+    async createAdmin(){
+        
+        const admin = await Users.findAll({
+            where:{
+                is_admin: true
+            }
+        })
+        if(admin.length == 0){
+            await Users.create({
+                email: config.ADMIN_EMAIL,
+                password: bcrypt.hashSync(config.ADMIN_PASSWORD, 7),
+                is_admin: true
+            })
+        }
+        else{
+            throw status(400, 'admin is created, check this')
+        }
+    }
+
+    async showPurchases(){
+        let purchase = await Purchases.findAll()
+        let user_count = await Users.count() - 1
+        return {
+            purchase,
+            user_count
+        }
+    }
 }
 
 export default new UserServ()

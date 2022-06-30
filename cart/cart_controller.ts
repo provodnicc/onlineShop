@@ -1,9 +1,9 @@
-import cartService from './cart_srevice'
+import cartService from './cart_service'
 class CartController
 {
     async getCartProducts(req: any, res: any, next: any){
         try{
-            const cart = await cartService.getCartProduct(req.user.id)
+            const cart = await cartService.getCartProduct(1)
             res.json(cart).status(200)
         }catch(e){
             next(e)
@@ -13,7 +13,7 @@ class CartController
     async addProductToCart(req: any, res: any, next: any){
         try{
             const {p_id, count} = req.body
-            const cartData = await cartService.addProductToCart(p_id, req.user.id, count)
+            const cartData = await cartService.addProductToCart(p_id, 1, count)
             res.json(cartData).status(200)
         }catch(e){
             next(e)
@@ -22,12 +22,14 @@ class CartController
 
     async offerCart(req: any, res: any, next: any){
         try{
-            await cartService.offerCart(1)
-            res.json().status(200)
+            let purchase = await cartService.offerCart(1)
+            res.json(purchase).status(200)
         }catch(e){
             next(e)
         }
     }
+
+    
 }
 
 export default new CartController()

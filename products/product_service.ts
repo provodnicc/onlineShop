@@ -15,20 +15,31 @@ class ProductService
         if(!name || !price || !count){
             throw status(203)
         }
-        let prod = Products.build({
-            name: name,
-            price: price,
-            description: description,
-            count: count
+        let findProd = await Products.findOne({
+            where: {
+                name:name
+            }
         })
-        if(image){
-            let type_img = image.name.split('.')
-            prod.image_url = prod.id + '.' + type_img[type_img.length-1]
-            image.mv(`./products/media/${prod.image_url}`)
+        if(findProd){
+            findProd.count += Number(count)
+            findProd.price = price
+            findProd.save()
+            return findProd.id
+        }else{
+            let prod = Products.build({
+                name: name,
+                price: price,
+                description: description,
+                count: count
+            })
+            if(image){
+                let type_img = image.name.split('.')
+                prod.image_url = prod.id + '.' + type_img[type_img.length-1]
+                image.mv(`./products/media/${prod.image_url}`)
+            }
+            prod.save()
+            return prod.id
         }
-
-        prod.save()
-        return prod.id
     }
 
     async getAllProducts(){
