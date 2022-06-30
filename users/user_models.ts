@@ -39,10 +39,10 @@ Users.init(
 )
 
 
-if (config.DEBUG)
-    Users.sync({ force: true })
-else
-    Users.sync()
+// if (config.DEBUG)
+//     Users.sync({ force: true })
+// else
+//     Users.sync()
 
 export {
     Users

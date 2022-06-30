@@ -48,14 +48,6 @@ class UserController
         try{
             const {money} = req.body
             let userData = await userService.addMoney(req.user, money)
-            res.cookie(
-                'refreshToken',
-                userData.refreshToken,
-                {
-                    maxAge: 20*24*60*60*1000, 
-                    httpOnly: true
-                }
-            )
             res.json(userData).status(200)
         }catch(e){
 

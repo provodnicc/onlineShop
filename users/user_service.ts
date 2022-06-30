@@ -5,6 +5,8 @@ import {Users} from './user_models'
 import { Tokens } from '../tokens/token_models'
 import tokenService from '../tokens/token_service'
 import { UserDTO } from './userDTO'
+import { Cart } from '../cart/cart_models'
+
 class UserServ
 {
     async signUp(email: string, password: string){
@@ -24,7 +26,9 @@ class UserServ
             email: email,
             password: bcrypt.hashSync(password, 7)
         })
-
+        Cart.create({
+            u_id:user.id
+        })
         return user
     }
 
@@ -87,12 +91,8 @@ class UserServ
         
         let userDto = new UserDTO(user)
 
-        let tokens = tokenService.generateTokens({...userDto})
-        await tokenService.saveToken(tokens.refreshToken)
-        
         return {
             userDto,
-            ...tokens
         }
    }
 }

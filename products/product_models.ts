@@ -17,6 +17,7 @@ Products.init(
         id:{
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
+            unique:true,
             primaryKey: true
         },
         name: {
@@ -43,10 +44,10 @@ Products.init(
     }
 )
 
-if(config.DEBUG)
-    Products.sync({force:true})
-else
-    Products.sync()
+// if(config.DEBUG)
+//     Products.sync({force:true})
+// else
+//     Products.sync()
 
 export {
     Products

@@ -25,10 +25,10 @@ Tokens.init(
     }
 )
 
-if (config.DEBUG)
-    Tokens.sync({ force: true })
-else
-    Tokens.sync()
+// if (config.DEBUG)
+//     Tokens.sync({ force: true })
+// else
+//     Tokens.sync()
 
 export {
     Tokens
