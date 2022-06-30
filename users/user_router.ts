@@ -3,7 +3,7 @@ import Router from 'express'
 import UserController from './user_controller'
 import {body} from 'express-validator'
 import { tokenMiddleware } from '../tokens/token_middleware'
-
+import config from '../config'
 /**
  * Routes /user requests
  * @url /sign-up POST
@@ -37,6 +37,9 @@ userRouter.post(
     tokenMiddleware,
     UserController.addMoney
 )
+
+if(config.DEBUG)
+    userRouter.get('/create-admin')
 
 
 export default userRouter

@@ -19,6 +19,15 @@ class CartController
             next(e)
         }
     }
+
+    async offerCart(req: any, res: any, next: any){
+        try{
+            await cartService.offerCart(1)
+            res.json().status(200)
+        }catch(e){
+            next(e)
+        }
+    }
 }
 
 export default new CartController()

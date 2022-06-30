@@ -1,6 +1,7 @@
 import {Cart} from './cart_models'
 
 import { Products } from '../products/product_models'
+import { Users } from '../users/user_models'
 class CartService
 {
     async getCartProduct(u_id: number){
@@ -35,6 +36,19 @@ class CartService
         return {
             cart
         }
+    }
+
+    async offerCart(u_id: number){
+        const cart = await Cart.findAll({
+            where: {
+                u_id:u_id || 1
+            },
+            include: [Products, Users]
+        })
+        // for(let product of cart){
+            // product
+        // }
+        console.log(cart)
     }
 }
 export default new CartService()

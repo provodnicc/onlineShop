@@ -3,8 +3,10 @@ Install dependenses
 set .env config and database user and password
 init postgres database via:
 ### `psql -U postgres -f init.sql`
+or create user 'shop' with password 'shop' and database 'shop_db' for postgresql
 to start web server use:
 ### `npm run dev`
+
 
 Для авторизации используются JWT acesss и refresh токены, acesss хранится и передается в заголовке запроса в поле authorization для подтверждения своей сессии, refresh токен хранится в localStore, на его основе можно обновить сессию /token/refresh, если токен acess устарел
 

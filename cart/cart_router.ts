@@ -10,4 +10,16 @@ cartRouter.post(
     cartController.addProductToCart
 )
 
+cartRouter.get(
+    '/',
+    tokenMiddleware,
+    cartController.getCartProducts
+)
+
+cartRouter.post(
+    '/offer',
+    tokenMiddleware,
+    cartController.offerCart
+)
+
 export default cartRouter

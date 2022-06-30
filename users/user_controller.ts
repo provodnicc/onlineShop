@@ -38,8 +38,6 @@ class UserController
         }
     }
 
-    
-
     async logOut(req: any, res: any, next: any){
         try{
             const {refreshToken} = req.cookies
@@ -58,6 +56,14 @@ class UserController
             res.json(userData).status(200)
         }catch(e){
 
+        }
+    }
+
+    createAdmin(req: any, res: any, next: any){
+        try{
+
+        }catch(e){
+            next(e)
         }
     }
 }

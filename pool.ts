@@ -21,6 +21,9 @@ if(config.DEBUG){
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
+}else{
+    sequelize.sync()
+
 }
 
 export default sequelize

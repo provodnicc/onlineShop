@@ -1,15 +1,16 @@
 import { Router } from "express";
 import productController from './product_controller'
 import { adminMiddleware } from "../tokens/token_middleware";
+
 const productRouter = Router()
 
 productRouter.post(
     '/add',
-    // adminMiddleware,
+    adminMiddleware,
     productController.addProduct
 )
 
-productRouter.get('s', productController.getAllProducts)
+productRouter.get('/all', productController.getAllProducts)
 productRouter.get('/', productController.getOneProduct)
 productRouter.get('/media', productController.getMedia)
 

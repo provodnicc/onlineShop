@@ -18,7 +18,7 @@ class ProductDTO
         this.name=model.name
         this.description=model.description
         this.price=model.price
-        this.image_url=`/products/media?p_id=${model.id}`
+        this.image_url=`/product/media?p_id=${model.id}`
     }
 }
 
