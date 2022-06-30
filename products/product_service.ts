@@ -40,7 +40,6 @@ class ProductService
         return productsDTO
     }
 
-
     async getOneProduct(p_id: string){
         
         let product = await Products.findOne({
@@ -50,13 +49,14 @@ class ProductService
         })
         return new ProductDTO(product)
     }
+
     async getMedia(p_id: string){
         if(!p_id){
             throw status(400)
         }
         let prod = await Products.findOne({
             where:{
-                id: p_id 
+                id: p_id
             }
         })
 

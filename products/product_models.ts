@@ -15,8 +15,8 @@ class Products extends M
 {
     declare id: number
     declare name: string
-    declare description: string 
-    declare image_url: string 
+    declare description: string
+    declare image_url: string
     declare price: number
     declare count: number
 }

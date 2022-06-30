@@ -12,12 +12,14 @@ class ProductDTO
     name: string
     description: string
     price: number
+    count: number
     image_url: string
     constructor(model: any){
         this.id=model.id
         this.name=model.name
         this.description=model.description
         this.price=model.price
+        this.count=model.count
         this.image_url=`/product/media?p_id=${model.id}`
     }
 }
