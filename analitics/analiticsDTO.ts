@@ -61,4 +61,4 @@ class PurchasesAnaliticDTO
     }
 }
 
-export {AnaliticDTO}
+export {AnaliticDTO, PurchasesAnaliticDTO}

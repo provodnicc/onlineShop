@@ -1,5 +1,5 @@
 import { Users } from "../users/user_models";
-import { AnaliticDTO } from "./analiticsDTO";
+import { AnaliticDTO, PurchasesAnaliticDTO } from "./analiticsDTO";
 import status from 'http-errors'
 import { Purchases } from "../cart/cart_models";
 
@@ -28,11 +28,10 @@ class AnaliticsService
             }
         })
 
-        purchase
-        let config = {
-            money: user,
+        let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
+        
 
-        }
+        let config = await purchasesAnaliticDTO.init(purchase)
 
         return config
     }
