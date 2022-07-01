@@ -60,9 +60,10 @@ Cart.init(
  * @field price
  */
 class Purchases extends M{
-    declare id: Number
-    declare u_id: Number
-    declare price: Number
+    declare id: number
+    declare u_id: number
+    declare price: number
+    declare createdAt: Date
 }
 
 Purchases.init(

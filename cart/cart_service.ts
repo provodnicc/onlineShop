@@ -20,7 +20,7 @@ class CartService
     }
 
     async addProductToCart(p_id: string, u_id: number, count: number){
-        
+
         const product_in_cart = await Cart.findOne({
             where:{
                 p_id: p_id,
@@ -41,8 +41,6 @@ class CartService
             product_in_cart.save()
             return product_in_cart
         }
-
-        
     }
 
     async offerCart(u_id: number){
@@ -71,7 +69,7 @@ class CartService
             if((prod!.count - product.count!)<0){
                 throw status(400, 'no items left in stock')
             }
-            prod!.count -= product.count!
+            prod!.count -= Number(product.count!)
         }
 
         let user =await Users.findByPk(u_id)
@@ -80,7 +78,7 @@ class CartService
             throw status(400, 'too less money, you need '+price)
         }
 
-        user!.money -= price
+        user!.money -= Number(price)
         user?.save()
 
         let purchase = await Purchases.create({
@@ -91,10 +89,10 @@ class CartService
         for(let product of cart){
             product.destroy()
         }
-        
+
         return purchase
     }
-
+    
     async showPurchases(){
         return await Purchases.findAll()
     }

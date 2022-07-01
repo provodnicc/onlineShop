@@ -13,6 +13,7 @@ import userRouter from './users/user_router'
 import tokenRouter from "./tokens/token_router"
 import productRouter from "./products/product_router"
 import cartRouter from './cart/cart_router'
+import analiticsRouter from "./analitics/analitics_router"
 
 const app = express()
 const PORT = config.API_PORT || 9000
@@ -32,5 +33,6 @@ app.use('/user', userRouter)
 app.use('/token', tokenRouter)
 app.use('/product', productRouter)
 app.use('/cart', cartRouter)
+app.use('/analitics', analiticsRouter)
 
 app.listen(PORT, ()=>console.log(`server started on port: ${PORT}`))

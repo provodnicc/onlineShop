@@ -121,6 +121,18 @@ class UserServ
         }
     }
 
+    async getInfo(u_id: number){
+        let user = await Users.findByPk(u_id)
+        if(!user){
+            throw status(401)
+        }
+        let info = {
+            email: user?.email,
+            money: user?.money
+        }
+        return info
+    }
+
     async showPurchases(){
         let purchase = await Purchases.findAll()
         let user_count = await Users.count() - 1

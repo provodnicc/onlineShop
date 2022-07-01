@@ -68,6 +68,15 @@ class UserController
         }
     }
 
+    async getInfo(req: any, res: any, next: any){
+        try{
+            let info = await userService.getInfo(req.user.id)
+            res.json(info).status(200)
+        }catch(e){
+            next(e)
+        }
+    }
+
     async showPurchases(req: any, res: any, next: any){
         try{
             let purchase = await cartService.showPurchases()

@@ -39,6 +39,12 @@ userRouter.post(
 )
 // admin's routers
 
+userRouter.get(
+    '/profile',
+    tokenMiddleware,
+    UserController.getInfo
+)
+
 if(config.DEBUG)
     userRouter.get('/create-admin')
 
