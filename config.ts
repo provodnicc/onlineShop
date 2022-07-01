@@ -1,6 +1,6 @@
 
 export default {
-        DEBUG: true ,
+        DEBUG: true,
         API_SERVER: String(process.env.API_SERVER) || 'http://localhost:9000' ,
         API_PORT: Number(process.env.API_PORT)|| 9000,
         CLIENT_SERVER: String( process.env.CLIENT_SERVER) || 'http://localhost:8080',
