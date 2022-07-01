@@ -1,6 +1,7 @@
 import { Users } from "../users/user_models";
 import { AnaliticDTO } from "./analiticsDTO";
 import status from 'http-errors'
+import { Purchases } from "../cart/cart_models";
 
 
 class AnaliticsService
@@ -20,6 +21,20 @@ class AnaliticsService
         if(!user){
             throw status(400, 'user not found')
         }
+
+        let purchase = await Purchases.findAll({
+            where:{
+                u_id: u_id
+            }
+        })
+
+        purchase
+        let config = {
+            money: user,
+
+        }
+
+        return config
     }
 }
 

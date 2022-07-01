@@ -46,7 +46,7 @@ userRouter.get(
 )
 
 if(config.DEBUG)
-    userRouter.get('/create-admin')
+    userRouter.get('/create-admin', UserController.createAdmin)
 
 userRouter.get(
     '/analitics',

@@ -1,5 +1,10 @@
 import analiticService from "./analitics_service"
 
+/**
+ * this controller used for administrator requests
+ * @method getData GET request
+ * @method getUserAnalitics GET request
+ */
 class AnaliticsController
 {
     async getData(req:any, res:any, next: any){

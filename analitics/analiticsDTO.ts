@@ -46,7 +46,7 @@ class PurchasesAnaliticDTO
             
             this.prices?.push({
                 price: purchase.price,
-                // date: purchase
+                date: purchase.createdAt
             })
         }
         this.maxCheck = Number(max)
