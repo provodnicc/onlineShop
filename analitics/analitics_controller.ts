@@ -19,7 +19,8 @@ class AnaliticsController
         try{
             const {u_id} = req.query
 
-            await analiticService.getUserAnalitics(u_id)
+            const config = await analiticService.getUserAnalitics(u_id)
+            res.json(config).status(200)
         }catch(e){
             next(e)
         }
