@@ -44,7 +44,7 @@ if(config.DEBUG)
 
 userRouter.get(
     '/analitics',
-    // adminMiddleware,
+    adminMiddleware,
     UserController.showPurchases
 )
 

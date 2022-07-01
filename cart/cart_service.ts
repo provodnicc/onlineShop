@@ -68,6 +68,9 @@ class CartService
             if(!prod){
                 throw status(400, 'in the cart nothing to offer')
             }
+            if((prod!.count - product.count!)<0){
+                throw status(400, 'no items left in stock')
+            }
             prod!.count -= product.count!
         }
 

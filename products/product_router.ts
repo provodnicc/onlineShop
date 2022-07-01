@@ -6,7 +6,7 @@ const productRouter = Router()
 
 productRouter.post(
     '/add',
-    // adminMiddleware,
+    adminMiddleware,
     productController.addProduct
 )
 

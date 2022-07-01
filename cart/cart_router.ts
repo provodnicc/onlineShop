@@ -6,19 +6,19 @@ const cartRouter = Router()
 
 cartRouter.post(
     '/add-product', 
-    // tokenMiddleware,
+    tokenMiddleware,
     cartController.addProductToCart
 )
 
 cartRouter.get(
     '',
-    // tokenMiddleware,
+    tokenMiddleware,
     cartController.getCartProducts
 )
 
 cartRouter.get(
     '/offer',
-    // tokenMiddleware,
+    tokenMiddleware,
     cartController.offerCart
 )
 
