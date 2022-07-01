@@ -75,7 +75,7 @@ class UserServ
         await token!.destroy()
    }
 
-   async addMoney(userDATA:any, money: any){
+   async addMoney(userDATA:any, money: number){
 
         if(!userDATA){
             throw status(401)
@@ -92,13 +92,14 @@ class UserServ
         if(!user){
             throw status(401)
         }
-        user!.money += money
+        user!.money = Number(user!.money) + Number(money)
         user.save()
         
         let userDto = new UserDTO(user)
 
         return {
             userDto,
+            money: user!.money
         }
    }
 

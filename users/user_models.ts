@@ -33,7 +33,7 @@ Users.init(
             allowNull: false
         },
         money: {
-            type:DataTypes.INTEGER,
+            type:DataTypes.DECIMAL(10,2),
             defaultValue: 0
         },
         is_admin: {
