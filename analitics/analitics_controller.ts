@@ -7,9 +7,9 @@ import analiticService from "./analitics_service"
  */
 class AnaliticsController
 {
-    async getData(req:any, res:any, next: any){
+    async getUsers(req:any, res:any, next: any){
         try{
-            const config = await analiticService.getData()
+            const config = await analiticService.getUsers()
             res.json(config).status(200)
         }catch(e){
             next(e)

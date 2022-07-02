@@ -118,8 +118,8 @@ class CartService
                 p_id: p_id
             }
         })
-        if(productInCart){
-            status(400, 'product undefined')
+        if(!productInCart){
+            throw status(400, 'product undefined')
         }
         productInCart?.destroy()
     }

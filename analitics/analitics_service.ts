@@ -6,7 +6,7 @@ import { Purchases } from "../cart/cart_models";
 
 class AnaliticsService
 {
-    async getData(){
+    async getUsers(){
         let users = await Users.findAll()
         let analiticDTO = new AnaliticUserDTO()
 
