@@ -12,23 +12,23 @@ const tokenMiddleware = (req: any, res: any, next: any)=>{
         const authHeader = req.headers.authorization
 
         if(!authHeader){
-            return next(status(401))
+            return next(status(401, 'header did not found'))
         }
 
         const accesstoken = authHeader.split(' ')[1]
         if(!accesstoken){
-            return next(status(401))
+            return next(status(401,  'token did not found'))
         }
 
         const userData = tokenService.validateToken(accesstoken)
         if(!userData){
-            return next(status(401))
+            return next(status(401, 'validation error'))
         }
 
         req.user = userData
         next()
     }catch(e){
-        return next(status(401))
+        return next(e)
     }
 }
 /**
@@ -43,20 +43,20 @@ const adminMiddleware = (req:any, res:any, next:any)=>{
         const authHeader = req.headers.authorization
 
         if(!authHeader){
-            return next(status(401))
+            return next(status(401, 'header did not found'))
         }
 
         const accesstoken = authHeader.split(' ')[1]
         if(!accesstoken){
-            return next(status(401))
+            return next(status(401, 'token did not found'))
         }
 
         const userData = tokenService.validateToken(accesstoken)
         if(!userData){
-            return next(status(401))
+            return next(status(401, 'validation error'))
         }
         if(!userData.is_admin){
-            throw next(status(403))
+            throw next(status(403, 'no admin'))
         }
         req.user = userData
         next()
