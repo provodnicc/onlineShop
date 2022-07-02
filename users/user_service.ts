@@ -59,7 +59,8 @@ class UserServ
         await tokenService.saveToken(tokens.refreshToken)
 
         return {
-            ...tokens
+            ...tokens,
+            userDto
         }
     }
 
