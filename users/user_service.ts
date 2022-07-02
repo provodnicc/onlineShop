@@ -92,6 +92,7 @@ class UserServ
         if(!user){
             throw status(401)
         }
+
         user!.money = Number(user!.money) + Number(money)
         user.save()
         
@@ -99,7 +100,7 @@ class UserServ
 
         return {
             userDto,
-            money: user!.money
+            money: Number(user!.money)
         }
    }
 

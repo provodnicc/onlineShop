@@ -96,5 +96,9 @@ class CartService
     async showPurchases(){
         return await Purchases.findAll()
     }
+
+    async removeProductInCart(u_id: number, p_id: number, count: number){
+        
+    }
 }
 export default new CartService()
