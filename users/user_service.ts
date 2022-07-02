@@ -7,6 +7,7 @@ import tokenService from '../tokens/token_service'
 import { UserDTO } from './userDTO'
 import { Cart, Purchases } from '../cart/cart_models'
 import config from '../config'
+import { AnaliticUserDTO } from '../analitics/analiticsDTO'
 
 /**
  * Service for user controller requests
@@ -58,7 +59,6 @@ class UserServ
         await tokenService.saveToken(tokens.refreshToken)
 
         return {
-            userDto,
             ...tokens
         }
     }
@@ -96,11 +96,10 @@ class UserServ
         user!.money = Number(user!.money) + Number(money)
         user.save()
         
-        let userDto = new UserDTO(user)
-
+        let analiticUserDTO = new AnaliticUserDTO()
+        analiticUserDTO.init(user)
         return {
-            userDto,
-            money: Number(user!.money)
+            ...analiticUserDTO
         }
    }
 

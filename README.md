@@ -7,6 +7,9 @@ or create user 'shop' with password 'shop' and database 'shop_db' for postgresql
 to start web server use:
 ### `npm run dev`
 
+Для создания администратора online shop надо отправить запрос по адресу /user/create-admin, в базовом варианте создастся пользователь с 
+### `email: test@mail.ru`
+### `password: administrator`
 
 Для авторизации используются JWT acesss и refresh токены, acesss хранится и передается в заголовке запроса в поле authorization для подтверждения своей сессии, refresh токен хранится в localStore, на его основе можно обновить сессию /token/refresh, если токен acess устарел
 

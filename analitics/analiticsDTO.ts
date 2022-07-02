@@ -1,20 +1,22 @@
 import { Purchases } from "../cart/cart_models"
 import { Users } from "../users/user_models"
 
-class AnaliticDTO
+class AnaliticUserDTO
 {
     id?:number
     email?: string
+    money?: number
     init(model: Users){
         this.id=model.id
         this.email=model.email
+        this.money=model.money
     }
 
     initArray(userList: Array<Users>){
-        let AnaliticDTOList: Array<AnaliticDTO> = new Array<AnaliticDTO>()
+        let AnaliticDTOList: Array<AnaliticUserDTO> = new Array<AnaliticUserDTO>()
 
         for(let user of userList){
-            let analiticDTO = new AnaliticDTO()
+            let analiticDTO = new AnaliticUserDTO()
             analiticDTO.init(user)
             AnaliticDTOList.push(analiticDTO)
         }
@@ -61,4 +63,4 @@ class PurchasesAnaliticDTO
     }
 }
 
-export {AnaliticDTO, PurchasesAnaliticDTO}
+export {AnaliticUserDTO, PurchasesAnaliticDTO}

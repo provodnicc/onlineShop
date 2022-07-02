@@ -1,5 +1,5 @@
 import { Users } from "../users/user_models";
-import { AnaliticDTO, PurchasesAnaliticDTO } from "./analiticsDTO";
+import { AnaliticUserDTO, PurchasesAnaliticDTO } from "./analiticsDTO";
 import status from 'http-errors'
 import { Purchases } from "../cart/cart_models";
 
@@ -8,7 +8,7 @@ class AnaliticsService
 {
     async getData(){
         let users = await Users.findAll()
-        let analiticDTO = new AnaliticDTO()
+        let analiticDTO = new AnaliticUserDTO()
 
         analiticDTO.initArray(users)
         
