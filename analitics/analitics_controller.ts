@@ -9,7 +9,8 @@ class AnaliticsController
 {
     async getData(req:any, res:any, next: any){
         try{
-            res.json(await analiticService.getData()).status(200)
+            const config = await analiticService.getData()
+            res.json(config).status(200)
         }catch(e){
             next(e)
         }

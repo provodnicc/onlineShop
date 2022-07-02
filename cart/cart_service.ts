@@ -33,13 +33,18 @@ class CartService
                 p_id: p_id,
                 count: count
             })
+
+            const cartDTO = new CartDTO()
+            await cartDTO.init(cart)
             return {
-                cart
+                ...cartDTO
             }
         }else{
             product_in_cart.count += Number(count)
             product_in_cart.save()
-            return product_in_cart
+            const cartDTO = new CartDTO()
+            await cartDTO.init(product_in_cart)
+            return {...cartDTO}
         }
     }
 
@@ -55,21 +60,22 @@ class CartService
         }
 
         let cartDTO = new CartDTO()
-        let products: Array<CartDTO> = new Array<CartDTO>()
-        products = await cartDTO.initArray(cart)
+        let productsInCart: Array<CartDTO> = new Array<CartDTO>()
+        productsInCart = await cartDTO.initArray(cart)
         
         let price: number = 0
-        for(let product of products){
+        for(let productInCart of productsInCart){
         
-            price +=product.count!*product.product?.price!
-            let prod = await Products.findByPk(product.product?.id)
-            if(!prod){
+            price +=productInCart.count!*productInCart.product?.price!
+            let finded_prod = await Products.findByPk(productInCart.product?.id)
+            if(!finded_prod){
                 throw status(400, 'in the cart nothing to offer')
             }
-            if((prod!.count - product.count!)<0){
+            if((finded_prod!.count - productInCart.count!)<0){
                 throw status(400, 'no items left in stock')
             }
-            prod!.count -= Number(product.count!)
+            finded_prod!.count -= Number(productInCart.count!)
+            finded_prod.save()
         }
 
         let user =await Users.findByPk(u_id)
@@ -86,8 +92,8 @@ class CartService
             price: price
         })
 
-        for(let product of cart){
-            product.destroy()
+        for(let productCart of cart){
+            productCart.destroy()
         }
 
         return purchase
@@ -98,7 +104,11 @@ class CartService
     }
 
     async removeProductInCart(u_id: number, p_id: number, count: number){
-        
+        const cart = await Cart.findOne({
+            where:{
+
+            }
+        })
     }
 }
 export default new CartService()
