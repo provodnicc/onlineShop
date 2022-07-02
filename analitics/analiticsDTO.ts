@@ -6,6 +6,7 @@ class AnaliticUserDTO
     id?:number
     email?: string
     money?: number
+    is_admin
     init(model: Users){
         this.id=model.id
         this.email=model.email
@@ -16,6 +17,9 @@ class AnaliticUserDTO
         let AnaliticDTOList: Array<AnaliticUserDTO> = new Array<AnaliticUserDTO>()
 
         for(let user of userList){
+            if(user.is_admin){
+                continue
+            }
             let analiticDTO = new AnaliticUserDTO()
             analiticDTO.init(user)
             AnaliticDTOList.push(analiticDTO)
