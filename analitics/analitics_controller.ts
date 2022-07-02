@@ -10,6 +10,7 @@ class AnaliticsController
     async getUsers(req:any, res:any, next: any){
         try{
             const config = await analiticService.getUsers()
+            console.log(config)
             res.json(config).status(200)
         }catch(e){
             next(e)
