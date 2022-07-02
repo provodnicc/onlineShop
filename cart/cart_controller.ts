@@ -31,8 +31,8 @@ class CartController
 
     async removeProductInCart(req: any, res: any, next: any){
         try{
-            const {p_id, count} = req.body
-            await cartService.removeProductInCart(req.user.id, p_id, count)
+            const {p_id} = req.body
+            await cartService.removeProductInCart(req.user.id, p_id)
             res.json("deleted").status(200)
         }catch(e){
             next(e)

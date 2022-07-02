@@ -111,12 +111,17 @@ class CartService
         return await Purchases.findAll()
     }
 
-    async removeProductInCart(u_id: number, p_id: number, count: number){
-        const cart = await Cart.findOne({
+    async removeProductInCart(u_id: number, p_id: number){
+        const productInCart = await Cart.findOne({
             where:{
-
+                u_id: u_id,
+                p_id: p_id
             }
         })
+        if(productInCart){
+            status(400, 'product undefined')
+        }
+        productInCart?.destroy()
     }
 }
 export default new CartService()
