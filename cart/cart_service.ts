@@ -20,13 +20,19 @@ class CartService
     }
 
     async addProductToCart(p_id: string, u_id: number, count: number){
-
+        const product = await Products.findByPk(p_id)
+        if(!product){
+            throw status(400, 'product not found')
+        }
         const product_in_cart = await Cart.findOne({
             where:{
                 p_id: p_id,
                 u_id: u_id
             },
         })
+        if((product?.count-count)<0){
+            throw status(400, 'no items left in stock')
+        }
         if(!product_in_cart){
             let cart = await Cart.create({
                 u_id: u_id,
@@ -44,7 +50,9 @@ class CartService
             product_in_cart.save()
             const cartDTO = new CartDTO()
             await cartDTO.init(product_in_cart)
-            return {...cartDTO}
+            return {
+                ...cartDTO
+            }
         }
     }
 
