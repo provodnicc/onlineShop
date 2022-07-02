@@ -22,4 +22,10 @@ cartRouter.get(
     cartController.offerCart
 )
 
+cartRouter.get(
+    '/remove-item',
+    tokenMiddleware,
+    cartController.removeProductInCart
+)
+
 export default cartRouter
