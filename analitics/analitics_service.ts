@@ -9,7 +9,7 @@ class AnaliticsService
     async getUsers(){
         let users = await Users.findAll()
         let analiticDTO = new AnaliticUserDTO()
-        let data: Array<PurchasesAnaliticDTO> = new Array<PurchasesAnaliticDTO>()
+        let data: Array<any> = new Array<any>()
         for(let user of analiticDTO.initArray(users)){
 
             let purchase = await Purchases.findAll({
@@ -22,7 +22,7 @@ class AnaliticsService
             
 
             await purchasesAnaliticDTO.init(purchase)
-            data.push(purchasesAnaliticDTO)
+            data.push({...purchasesAnaliticDTO, email: user.email})
         }
         return data
     }
