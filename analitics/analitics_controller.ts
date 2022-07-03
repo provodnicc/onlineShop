@@ -27,6 +27,15 @@ class AnaliticsController
             next(e)
         }
     }
+
+    async getPurchasesInfo(req:any, res:any, next: any){
+        try{
+            const analitics = await analiticService.getPurchasesInfo()
+            res.json(analitics).status(200)
+        }catch(e){
+            next(e)
+        }
+    }
 }
 
 export default new AnaliticsController()

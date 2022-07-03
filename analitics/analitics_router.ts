@@ -15,4 +15,11 @@ analiticsRouter.get(
     analiticsController.getUserAnalitics
 )
 
+analiticsRouter.get(
+    '/purchases',
+    adminMiddleware,
+    analiticsController.getPurchasesInfo
+
+)
+
 export default analiticsRouter

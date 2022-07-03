@@ -33,6 +33,13 @@ class AnaliticsService
 
         return purchasesAnaliticDTO
     }
+
+    async getPurchasesInfo(){
+        const purchases = await Purchases.findAll()
+        const purchasesAnaliticDTO = new PurchasesAnaliticDTO()
+        await purchasesAnaliticDTO.init(purchases)
+        return purchasesAnaliticDTO
+    }
 }
 
 export default new AnaliticsService()
