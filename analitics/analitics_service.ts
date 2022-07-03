@@ -29,9 +29,9 @@ class AnaliticsService
         let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
         
 
-        let config = await purchasesAnaliticDTO.init(purchase)
+        await purchasesAnaliticDTO.init(purchase)
 
-        return config
+        return purchasesAnaliticDTO
     }
 }
 
