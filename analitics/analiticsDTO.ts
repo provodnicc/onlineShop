@@ -31,7 +31,7 @@ class AnaliticUserDTO
 class PurchasesAnaliticDTO
 {
     maxCheck?: number
-    minСheck?: number
+    minCheck?: number
     mediumCheck?: number
     count?: number
     sum?: number
@@ -43,16 +43,16 @@ class PurchasesAnaliticDTO
         console.log(purchases_list)
         let sum = 0
         for(let purchase of  purchases_list){
-            if(max<purchase.price){
-                console.log('max',max)
+            if(Number(max)<Number(purchase.price)){
+                console.log('max',max, purchase.u_id)
                 max = purchase.price
-                console.log('max',max)
+                console.log('max',max, purchase.u_id)
             }
 
-            if(min>purchase.price){
-                console.log('min',min)
+            if(Number(min)>Number(purchase.price)){
+                console.log('min',min, purchase.u_id)
                 min=purchase.price
-                console.log('min',min)
+                console.log('min',min, purchase.u_id)
             }
             console.log('\n')
             sum += Number(purchase.price)
@@ -63,8 +63,8 @@ class PurchasesAnaliticDTO
             })
         }
         this.maxCheck = Number(max)
-        this.minСheck = Number(min)
-
+        this.minCheck = Number(min)
+        
         this.count = purchases_list.length
         this.sum = sum
 
