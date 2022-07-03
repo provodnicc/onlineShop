@@ -6,7 +6,7 @@ class AnaliticUserDTO
     id?:number
     email?: string
     money?: number
-    is_admin
+    is_admin?: boolean
     init(model: Users){
         this.id=model.id
         this.email=model.email

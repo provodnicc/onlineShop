@@ -9,7 +9,7 @@ class AnaliticsService
     async getUsers(){
         let users = await Users.findAll()
         let analiticDTO = new AnaliticUserDTO()
-
+        
         return analiticDTO.initArray(users)
     }
 
