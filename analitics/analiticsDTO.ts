@@ -31,32 +31,39 @@ class AnaliticUserDTO
 class PurchasesAnaliticDTO
 {
     maxCheck?: number
-    minSheck?: number
+    minСheck?: number
     mediumCheck?: number
     count?: number
     sum?: number
     prices?: Array<any>
+
     async init(purchases_list: Array<Purchases>){
         let max = purchases_list[0].price
         let min = purchases_list[0].price
+        console.log(purchases_list)
         let sum = 0
         for(let purchase of  purchases_list){
             if(max<purchase.price){
+                console.log('max',max)
                 max = purchase.price
-            }
-            if(min>purchase.price){
-                min=purchase.price
+                console.log('max',max)
             }
 
+            if(min>purchase.price){
+                console.log('min',min)
+                min=purchase.price
+                console.log('min',min)
+            }
+            console.log('\n')
             sum += Number(purchase.price)
-            
+
             this.prices?.push({
                 price: purchase.price,
                 date: purchase.createdAt
             })
         }
         this.maxCheck = Number(max)
-        this.minSheck = Number(min)
+        this.minСheck = Number(min)
 
         this.count = purchases_list.length
         this.sum = sum

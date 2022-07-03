@@ -80,10 +80,15 @@ Purchases.init(
                 model: Users
             }
         },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: Date.now()
+        },
         price: DataTypes.DECIMAL(12,2)
     },{
         sequelize,
-        modelName: 'purshases'
+        modelName: 'purshases',
+        timestamps: false
     }
 )
 export {
