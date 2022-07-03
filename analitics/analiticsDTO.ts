@@ -43,16 +43,13 @@ class PurchasesAnaliticDTO
         console.log(purchases_list)
         let sum = 0
         for(let purchase of  purchases_list){
+            console.log(typeof purchase.price)
             if(Number(max)<Number(purchase.price)){
-                console.log('max',max, purchase.u_id)
                 max = purchase.price
-                console.log('max',max, purchase.u_id)
             }
 
             if(Number(min)>Number(purchase.price)){
-                console.log('min',min, purchase.u_id)
                 min=purchase.price
-                console.log('min',min, purchase.u_id)
             }
             console.log('\n')
             sum += Number(purchase.price)

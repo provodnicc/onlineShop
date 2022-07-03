@@ -82,7 +82,8 @@ class CartService
             if((finded_prod!.count - productInCart.count!)<0){
                 throw status(400, 'no items left in stock')
             }
-            finded_prod!.count -= Number(productInCart.count!)
+            finded_prod.count -= Number(productInCart.count)
+            finded_prod.count_sales = Number(finded_prod.count_sales) + 1 
             finded_prod.save()
         }
 

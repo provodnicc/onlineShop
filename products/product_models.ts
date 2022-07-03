@@ -19,6 +19,7 @@ class Products extends M
     declare image_url: string
     declare price: number
     declare count: number
+    declare count_sales: number
 }
 
 Products.init(
@@ -46,6 +47,10 @@ Products.init(
         count:{
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        count_sales: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
         }
     },{
         sequelize,
