@@ -19,7 +19,6 @@ analiticsRouter.get(
     '/purchases',
     adminMiddleware,
     analiticsController.getPurchasesInfo
-
 )
 
 export default analiticsRouter

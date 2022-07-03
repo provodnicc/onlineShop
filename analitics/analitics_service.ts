@@ -9,8 +9,22 @@ class AnaliticsService
     async getUsers(){
         let users = await Users.findAll()
         let analiticDTO = new AnaliticUserDTO()
-        
-        return analiticDTO.initArray(users)
+        let data: Array<PurchasesAnaliticDTO> = new Array<PurchasesAnaliticDTO>()
+        for(let user of analiticDTO.initArray(users)){
+
+            let purchase = await Purchases.findAll({
+                where:{
+                    u_id: user.id
+                }
+            })
+
+            let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
+            
+
+            await purchasesAnaliticDTO.init(purchase)
+            data.push(purchasesAnaliticDTO)
+        }
+        return data
     }
 
     async getUserAnalitics(u_id: number){
