@@ -83,7 +83,7 @@ class CartService
                 throw status(400, 'no items left in stock')
             }
             finded_prod.count -= Number(productInCart.count)
-            finded_prod.count_sales = Number(finded_prod.count_sales) + 1 
+            finded_prod.count_sales = Number(finded_prod.count_sales) + Number(productInCart.count)
             finded_prod.save()
         }
 
