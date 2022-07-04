@@ -19,14 +19,16 @@ const app = express()
 const PORT = config.API_PORT || 9000
 
 let whiteList = [ config.API_SERVER, config.CLIENT_SERVER ]
-let corsOrigin = {
-    credentials: true
+const corsOptions = {
+    credentials:true,
+    origin: whiteList,
+    optionsSuccessStatus: 200
 }
 
-app.use(upload());
-
-app.use(cors(corsOrigin))
 app.use(express.json())
+
+app.use(upload());
+app.use(cors(corsOptions))
 app.use(cookie())
 
 app.use('/user', userRouter)
