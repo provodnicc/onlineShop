@@ -12,16 +12,19 @@ class AnaliticsService
         let data: Array<any> = new Array<any>()
         for(let user of analiticDTO.initArray(users)){
 
-            let purchase = await Purchases.findAll({
+            let purchases = await Purchases.findAll({
                 where:{
                     u_id: user.id
                 }
             })
+            if(!purchases.length){ //list purchases lenth == 0, user without purchases 
+                continue
+            }
 
             let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
             
 
-            await purchasesAnaliticDTO.init(purchase)
+            await purchasesAnaliticDTO.init(purchases)
             data.push({...purchasesAnaliticDTO, email: user.email})
         }
         return data
