@@ -74,8 +74,8 @@ class CartService
         let price: number = 0
         for(let productInCart of productsInCart){
         
-            price +=productInCart.count!*productInCart.product?.price!
-            let finded_prod = await Products.findByPk(productInCart.product?.id)
+            price +=productInCart.count!*productInCart.price!
+            let finded_prod = await Products.findByPk(productInCart.id)
             if(!finded_prod){
                 throw status(400, 'in the cart nothing to offer')
             }

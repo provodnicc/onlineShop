@@ -5,10 +5,20 @@ import { Cart } from "./cart_models"
 
 class CartDTO
 {
-    product?: ProductDTO
+    id?: string
+    name?: string
+    description?: string 
+    price?: number
+    image_url?: string
     count?: number
     async init (model: Cart){
-        this.product = new ProductDTO(await Products.findByPk(model.p_id))        
+        const product = new ProductDTO(await Products.findByPk(model.p_id))
+
+        this.id = product.id
+        this.name = product.name
+        this.description = product.description
+        this.price = product.price
+        this.image_url = product.image_url
         this.count=model.count
     }
 
