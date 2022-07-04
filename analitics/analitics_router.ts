@@ -5,7 +5,7 @@ const analiticsRouter = Router()
 
 analiticsRouter.get(
     '/users-list',
-    // adminMiddleware,
+    adminMiddleware,
     analiticsController.getUsers
 )
 
@@ -17,7 +17,7 @@ analiticsRouter.get(
 
 analiticsRouter.get(
     '/purchases',
-    // adminMiddleware,
+    adminMiddleware,
     analiticsController.getPurchasesInfo
 )
 
