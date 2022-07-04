@@ -21,6 +21,7 @@ const PORT = config.API_PORT || 9000
 let whiteList = [ config.API_SERVER, config.CLIENT_SERVER ]
 let corsOrigin = {
     origin: whiteList,
+    credentials: true
 }
 
 app.use(upload());
