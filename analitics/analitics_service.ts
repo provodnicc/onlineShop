@@ -10,6 +10,7 @@ class AnaliticsService
         let users = await Users.findAll()
         let analiticDTO = new AnaliticUserDTO()
         let data: Array<any> = new Array<any>()
+
         for(let user of analiticDTO.initArray(users)){
 
             let purchases = await Purchases.findAll({
@@ -23,7 +24,6 @@ class AnaliticsService
 
             let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
             
-
             await purchasesAnaliticDTO.init(purchases)
             data.push({...purchasesAnaliticDTO, email: user.email})
         }
@@ -37,22 +37,27 @@ class AnaliticsService
             throw status(400, 'user not found')
         }
 
-        let purchase = await Purchases.findAll({
+        let purchases = await Purchases.findAll({
             where:{
                 u_id: u_id
             }
         })
-
+        if(!purchases.length){ //list purchases lenth == 0, user without purchases 
+            throw status(400, 'purchases not found')
+        }
         let purchasesAnaliticDTO = new PurchasesAnaliticDTO()
         
 
-        await purchasesAnaliticDTO.init(purchase)
+        await purchasesAnaliticDTO.init(purchases)
 
         return purchasesAnaliticDTO
     }
 
     async getPurchasesInfo(){
         const purchases = await Purchases.findAll()
+        if(!purchases.length){ //list purchases lenth == 0, user without purchases 
+            throw status(400, 'purchases not found')
+        }
         const purchasesAnaliticDTO = new PurchasesAnaliticDTO()
         await purchasesAnaliticDTO.init(purchases)
         return purchasesAnaliticDTO
