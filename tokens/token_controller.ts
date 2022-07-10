@@ -1,4 +1,8 @@
 import tokenService from './token_service'
+/**
+ * controller for token requests
+ * @method refresh validate and update tokens
+ */
 class TokenController
 {
     async refresh(req: any, res: any, next: any){

@@ -9,8 +9,8 @@ import { UserDTO } from '../users/userDTO'
  * service for token controller requests
  * @method generateTokens 
  * @method saveToken
- * @method validateToken
- * @method refresh
+ * @method validateToken 
+ * @method refresh validate and update tokens
  */
 class TokenService
 {

@@ -6,6 +6,9 @@ import cartService from '../cart/cart_service'
  * @method logIn
  * @method logOut
  * @method addMoney - method to /user/payment requests
+ * @method createAdmin
+ * @method getInfo
+ * @method showPurchases 
  */
 class UserController
 {

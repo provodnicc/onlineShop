@@ -6,10 +6,13 @@ import { adminMiddleware, tokenMiddleware } from '../tokens/token_middleware'
 import config from '../config'
 /**
  * Routes /user requests
- * @url /sign-up POST
- * @url /log-in POST
- * @url /log-out GET
- * @url /payment POST
+ * @url /sign-up       POST
+ * @url /log-in        POST
+ * @url /log-out       GET
+ * @url /payment       POST
+ * @url /profile       GET
+ * @url /create-admin  GET if DEBUG=true
+ * @url /analitics     GET 
 */
 const userRouter = Router()
 
@@ -53,7 +56,5 @@ userRouter.get(
     adminMiddleware,
     UserController.showPurchases
 )
-
-
 
 export default userRouter

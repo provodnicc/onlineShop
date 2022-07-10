@@ -15,6 +15,9 @@ import { AnaliticUserDTO } from '../analitics/analiticsDTO'
  * @method logIn
  * @method logOut
  * @method addMoney
+ * @method createAdmin
+ * @method getInfo
+ * @method showPurchases
  */
 class UserServ
 {
