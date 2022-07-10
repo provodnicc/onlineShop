@@ -3,7 +3,11 @@ import { AnaliticUserDTO, PurchasesAnaliticDTO } from "./analiticsDTO";
 import status from 'http-errors'
 import { Purchases } from "../cart/cart_models";
 
-
+/**
+ * @method getUsers
+ * @method getUserAnalitics
+ * @method getPurchasesInfo
+ */
 class AnaliticsService
 {
     async getUsers(){

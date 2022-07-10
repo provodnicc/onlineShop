@@ -1,6 +1,12 @@
 import Router from 'express'
 import { adminMiddleware } from '../tokens/token_middleware'
 import analiticsController from  './analitics_controller'
+
+/**
+ * @url /users-list   GET  returns list users
+ * @url /user-detail  GET  returns detail info about user
+ * @url /purchases    GET  returns purchases analitics
+ */
 const analiticsRouter = Router()
 
 analiticsRouter.get(

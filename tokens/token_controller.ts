@@ -1,7 +1,8 @@
 import tokenService from './token_service'
+
 /**
  * controller for token requests
- * @method refresh validate and update tokens
+ * @method refresh 
  */
 class TokenController
 {

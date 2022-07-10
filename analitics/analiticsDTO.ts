@@ -1,6 +1,10 @@
 import { Purchases } from "../cart/cart_models"
 import { Users } from "../users/user_models"
-
+/**
+ * DTO for analitics about user
+ * @method init initialize fields AnaliticUserDTO using Users model
+ * @method initArray returns list AnaliticUserDTO objects array Users model 
+ */
 class AnaliticUserDTO
 {
     id?:number

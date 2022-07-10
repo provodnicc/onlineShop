@@ -2,7 +2,8 @@ import analiticService from "./analitics_service"
 
 /**
  * this controller used for administrator requests
- * @method getData GET request
+ * @method getUsers         GET request
+ * @method getData          GET request
  * @method getUserAnalitics GET request
  */
 class AnaliticsController
